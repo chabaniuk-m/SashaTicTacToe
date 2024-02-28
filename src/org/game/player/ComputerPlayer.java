@@ -21,6 +21,7 @@ public class ComputerPlayer extends Player {
             computerCol = random.nextInt(3);
             if (board.isEmpty(computerRow, computerCol)) {
                 board.makeMove(computerRow, computerCol, getMark());
+                System.out.println("Computer placed its mark at row " + (computerRow + 1) + ", column " + (computerCol + 1) + ".");
                 moveMade = true;
             }
         } while (!moveMade);
