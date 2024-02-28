@@ -19,18 +19,21 @@ public class Game {
 
     public void play() {
         try (Scanner scanner = new Scanner(System.in)) {
-            Player currentPlayer = computer;
-            while (board.isDraw()) {
+            Player currentPlayer = player; // Start with the player
+            while (true) {
                 System.out.println(board);
                 currentPlayer.choosePosition(board);
                 if (board.isWin(currentPlayer.getMark())) {
                     System.out.println(currentPlayer.winMessage());
                     return;
                 }
-                // change player
-                currentPlayer = (currentPlayer == computer) ? player : computer;
+                if (board.isDraw()) {
+                    System.out.println("Draw \\_•-•_/");
+                    return;
+                }
+                // Change player
+                currentPlayer = (currentPlayer == player) ? computer : player;
             }
-            System.out.println("Draw \\_•-•_/");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
