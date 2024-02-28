@@ -2,8 +2,12 @@ package org.game;
 
 public class Board {
     char[][] matrix;
+    /**
+     * n – кількість зроблених ходів
+     */
     int n;
     public Board(){
+        this.n = 0;
         this.matrix = new char[3][3];       // {null, null, null}
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -27,9 +31,13 @@ public class Board {
             return false; // Invalid move
         }
         matrix[row][col] = symbol;
+        n++;
         return true;
     }
 
+    /**
+     * Check is symbol is in the win state on the board
+     */
     public boolean isWin(char symbol) {
         // Check rows, columns, and diagonals for a win
         for (int i = 0; i < 3; i++) {
@@ -50,6 +58,8 @@ public class Board {
     }
 
     public boolean isDraw() {
+        return n == 9;
+        /*
         // Check if the board is full and no winner
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -59,6 +69,7 @@ public class Board {
             }
         }
         return true; // Board is full
+         */
     }
 
     public void clear() {
@@ -68,6 +79,7 @@ public class Board {
                 matrix[i][j] = '*';
             }
         }
+        n = 9;
     }
 
 
@@ -96,6 +108,6 @@ public class Board {
             if (i > 2)
                 sb.append("\n");
         }
-        return sb.toString().trim();
+        return sb.toString().substring(0, sb.length() - 1);
     }
 }
