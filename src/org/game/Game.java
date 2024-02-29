@@ -25,10 +25,14 @@ public class Game {
                 currentPlayer.choosePosition(board);
                 if (board.isWin(currentPlayer.getMark())) {
                     System.out.println(currentPlayer.winMessage());
+                    System.out.println("Finished grid:");
+                    System.out.println(board); // Display the finished grid
                     return;
                 }
                 if (board.isDraw()) {
                     System.out.println("Draw \\_•-•_/");
+                    System.out.println("Finished grid:");
+                    System.out.println(board); // Display the finished grid
                     return;
                 }
                 // Change player
