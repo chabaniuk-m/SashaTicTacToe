@@ -31,7 +31,7 @@ public class Game {
                 }
                 if (board.isDraw()) {
                     System.out.println("Draw \\_•-•_/");
-                    System.out.println("Finished grid:");
+                    System.out.println("Final grid:");
                     System.out.println(board); // Display the finished grid
                     return;
                 }
